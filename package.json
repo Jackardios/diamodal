@@ -5,15 +5,18 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --mode development --open",
-    "build": "webpack --mode development ./src/index.js --output ./dist/main.js",
-    "build:production": "webpack --mode production ./src/index.js --output ./dist/main.js"
+    "build": "webpack --mode development ./src/index.js --output ./dist/diamodal.js",
+    "build:production": "webpack --mode production ./src/index.js --output ./dist/diamodal.js"
   },
   "author": "",
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.1.2",
+    "@babel/plugin-proposal-class-properties": "^7.1.0",
     "@babel/preset-env": "^7.1.0",
+    "art-template-loader": "^1.4.3",
     "babel-loader": "^8.0.4",
+    "babel-minify-webpack-plugin": "^0.3.1",
     "clean-webpack-plugin": "^0.1.19",
     "css-loader": "^1.0.1",
     "css-mqpacker": "^7.0.0",
@@ -32,5 +35,9 @@
     "webpack-cli": "^3.1.2",
     "webpack-dev-server": "^3.1.10",
     "webpack-merge": "^4.1.4"
+  },
+  "dependencies": {
+    "dot": "^1.1.2",
+    "element-remove": "^1.0.3"
   }
 }

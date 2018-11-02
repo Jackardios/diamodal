@@ -21,6 +21,13 @@ module.exports = (env, options) => {
     module: {
       rules: [
         {
+          test: /\.js$/,
+          exclude: /node_modules/,
+          use: {
+            loader: "babel-loader"
+          }
+        },
+        {
           test: /\.(sa|sc|c)ss$/,
           use: [
             isDevMode ? 'style-loader' : MiniCssExtractPlugin.loader,
@@ -38,6 +45,14 @@ module.exports = (env, options) => {
             }
           ]
         },
+        {
+          test: /\.art$/,
+          loader: "art-template-loader",
+          options: {
+              // art-template options (if necessary)
+              // @see https://github.com/aui/art-template
+          }
+        }
       ]
     },
     plugins: [
@@ -53,17 +68,6 @@ module.exports = (env, options) => {
   }
 
   const devConfig = {
-    module: {
-      rules: [
-        {
-          test: /\.js$/,
-          exclude: /node_modules/,
-          use: {
-            loader: "babel-loader"
-          }
-        }
-      ]
-    },
     plugins: [
       new webpack.HotModuleReplacementPlugin(),
     ],
@@ -78,11 +82,6 @@ module.exports = (env, options) => {
   const productionConfig = {
     optimization: {
       minimizer: [
-        new UglifyJsPlugin({
-          cache: true,
-          parallel: true,
-          sourceMap: true // set to true if you want JS source maps
-        }),
         new OptimizeCSSAssetsPlugin({}),
       ],
       splitChunks: {
@@ -98,6 +97,11 @@ module.exports = (env, options) => {
       }
     },
     plugins: [
+      new UglifyJsPlugin({
+        cache: true,
+        parallel: true,
+        sourceMap: true // set to true if you want JS source maps
+      }),
       new MiniCssExtractPlugin({
         filename: 'diamodals.[hash].css',
       }),

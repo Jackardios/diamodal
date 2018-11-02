@@ -1,7 +1,6 @@
-.parent {
-  text-align: center;
-  color: #fff;
-  &__clild {
-    display: flex;
-  }
-}
+@import "./placeholders";
+@import "./colors";
+@import "./variables";
+
+@import "./components/diamodal";
+@import "./components/diamodal-form";
