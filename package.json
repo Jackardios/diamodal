@@ -1,6 +1,6 @@
 {
   "name": "diamodal",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Simple modals",
   "main": "./dist/diamodal.js",
   "files": [
@@ -14,8 +14,8 @@
   },
   "author": "Salakhutdinov Salavat <salahutdinov.salavat@gmail.com> (https://github.com/Jackardios)",
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/Jackardios/diamodal.git"
+    "type": "git",
+    "url": "https://github.com/Jackardios/diamodal.git"
   },
   "license": "MIT",
   "devDependencies": {
@@ -45,7 +45,5 @@
     "webpack-dev-server": "^3.1.10",
     "webpack-merge": "^4.1.4"
   },
-  "dependencies": {
-    "dot": "^1.1.2"
-  }
+  "dependencies": {}
 }
