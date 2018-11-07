@@ -34,7 +34,7 @@ function prepareDiamodalFormInputs(selectors, rootElement) {
 
 export default (rootElement = document) => {
     const prepared = prepareDiamodalFormInputs(SELECTORS, rootElement);
-    const inputs = document.querySelectorAll(SELECTORS.input);
+    const inputs = rootElement.querySelectorAll(SELECTORS.input);
 
     for (let i = 0; i < inputs.length; ++i) {
         inputs[i].addEventListener('focus', function() {

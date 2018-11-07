@@ -12,10 +12,10 @@ module.exports = (env, options) => {
 
   const commonConfig = {
     entry: {
-      diamodals: './src/index.js',
+      test: './test/index.js',
     },
     output: {
-      path: path.resolve(__dirname, 'dist'),
+      path: path.resolve(__dirname, 'test-build'),
       filename: '[name].js'
     },
     module: {
@@ -65,8 +65,7 @@ module.exports = (env, options) => {
     },
     plugins: [
       new CleanWebpackPlugin([
-        'dist',
-        'build'
+        'test-build',
       ]),
     ],
   }
@@ -74,9 +73,9 @@ module.exports = (env, options) => {
   const devConfig = {
     plugins: [
       new webpack.HotModuleReplacementPlugin(),
-      // new HtmlWebPackPlugin({
-      //   template: "./index.html",
-      // }),
+      new HtmlWebPackPlugin({
+        template: "./test/index.html",
+      }),
     ],
     devtool: 'source-map',
     devServer: {

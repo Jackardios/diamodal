@@ -5,12 +5,12 @@
   "main": "./dist/index.js",
   "files": [
     "dist/diamodal.js",
-    "dist/diamodal.js.map"
+    "dist/diamodal.css"
   ],
   "scripts": {
-    "start": "webpack-dev-server --mode development --open",
-    "build": "webpack --mode development ./src/index.js --output ./dist/diamodal.js",
-    "build:production": "webpack --mode production ./src/index.js --output ./dist/diamodal.js"
+    "build": "webpack --mode development",
+    "build:production": "webpack --mode production",
+    "test": "webpack-dev-server --mode development --open --config webpack.test.config.js"
   },
   "author": "Salakhutdinov Salavat <salahutdinov.salavat@gmail.com> (https://github.com/Jackardios)",
   "repository": {

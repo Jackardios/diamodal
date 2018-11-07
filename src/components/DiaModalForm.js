@@ -38,7 +38,6 @@ class DiaModalForm extends DiaModal {
       inputs: addIdsToInputs(inputs),
       submitText
     });
-    console.log(formHTML);
 
     super({
       template,
