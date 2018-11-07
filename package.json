@@ -10,7 +10,7 @@
   "scripts": {
     "start": "webpack-dev-server --mode development --open",
     "build": "webpack --mode development ./src/index.js --output ./dist/diamodal.js",
-    "build:production": "webpack --mode production ./src/index.js --output ./dist/diamodal.js",
+    "build:production": "webpack --mode production ./src/index.js --output ./dist/diamodal.js"
   },
   "author": "Salakhutdinov Salavat <salahutdinov.salavat@gmail.com> (https://github.com/Jackardios)",
   "repository": {
