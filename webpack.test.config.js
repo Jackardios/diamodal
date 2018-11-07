@@ -109,7 +109,7 @@ module.exports = (env, options) => {
         sourceMap: true // set to true if you want JS source maps
       }),
       new MiniCssExtractPlugin({
-        filename: 'diamodals.css',
+        filename: 'diamodal.css',
       }),
     ],
   }

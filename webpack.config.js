@@ -12,7 +12,7 @@ module.exports = (env, options) => {
 
   const commonConfig = {
     entry: {
-      diamodals: './src/index.js',
+      diamodal: './src/index.js',
     },
     output: {
       path: path.resolve(__dirname, 'dist'),
@@ -110,7 +110,7 @@ module.exports = (env, options) => {
         sourceMap: true // set to true if you want JS source maps
       }),
       new MiniCssExtractPlugin({
-        filename: 'diamodals.css',
+        filename: 'diamodal.css',
       }),
     ],
   }
