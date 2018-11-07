@@ -2,7 +2,7 @@
   "name": "diamodal",
   "version": "1.0.1",
   "description": "Simple modals",
-  "main": "./dist/diamodals.js",
+  "main": "./dist/diamodal.js",
   "files": [
     "dist/diamodal.js",
     "dist/diamodal.css"
