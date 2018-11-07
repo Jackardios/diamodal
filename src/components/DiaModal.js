@@ -1,9 +1,8 @@
-import dot from "dot"; // dot.compile(template, data)
 import { createElementFromHTML, addClass, removeClass } from "../utils/helpers";
 
 export default class DiaModal {
   constructor({
-    template = require("html-loader!../views/diamodal.dot"), // dot template
+    template = require("../templates/diamodal.art"), // template function
     title = "",
     content = "",
     boxSize = "small", // small | medium | large
@@ -11,9 +10,14 @@ export default class DiaModal {
     isOpenClass = "diamodal--is-open",
     isCloseClass = "diamodal--is-close",
     isClosingClass = "diamodal--is-closing",
-    openOnInit = true,
-    destroyOnClose = true,
+    openOnInit = false,
+    destroyOnClose = false,
     transitionDuration = 480,
+    onInit = f=>f,
+    onDestroy = f=>f,
+    onRender = f=>f,
+    onOpen = f=>f,
+    onClose = f=>f,
   }) {
     this._transitionDuration = transitionDuration;
     this._classes = {
@@ -23,12 +27,17 @@ export default class DiaModal {
     }
     this._root = root;
     this._template = template;
-    this._compileTemplate = dot.template(this._template);
     this._title = title;
     this._content = content;
     this._boxSize = boxSize;
     this._openOnInit = openOnInit;
     this._destroyOnClose = destroyOnClose;
+
+    this._onInit = onInit;
+    this._onDestroy = onDestroy;
+    this._onRender = onRender;
+    this._onOpen = onOpen;
+    this._onClose = onClose;
 
     this.init(openOnInit);
   }
@@ -41,17 +50,17 @@ export default class DiaModal {
         this.open();
       }
     }
+    this._onInit();
   }
 
   _attachHandlers() {
     this._box = this._element.querySelector('.diamodal-box');
     if (this._box) {
-      this._box.addEventListener('click', (event) => {
-        var clickedEl = event.target;
-        if(clickedEl.hasAttribute("data-diamodal-close")) {
-          this.close();
-        }
-      });
+      var closeButtons = this._box.querySelectorAll("[data-diamodal-close]");
+
+      for (let i = 0; i < closeButtons.length; ++i) {
+        closeButtons[i].addEventListener('click', (event) => this.close());
+      }
   
       this._box.addEventListener('click', (event) => {
         event.stopPropagation();
@@ -59,14 +68,13 @@ export default class DiaModal {
     }
 
     if (this._element) {
-      this._element.addEventListener('click', (event) => {
-        this.close();
-      });
+      this._element.addEventListener('click', (event) => this.close());
     }
   }
 
   destroy() {
-    this._element.remove();
+    this._element.parentNode.removeChild(this._element);
+    this._onDestroy();
   }
 
   open = () => {
@@ -79,11 +87,11 @@ export default class DiaModal {
 
     this._currentTimeout = setTimeout(() => {
       addClass(this._element, this._classes.isOpenClass);
+      this._onOpen();
     }, 10);
   }
 
   close = (destroyOnClose = this._destroyOnClose) => {
-    clearTimeout(this._currentTimeout);
     removeClass(this._element, this._classes.isOpenClass);
     removeClass(this._element, this._classes.isCloseClass);
     addClass(this._element, this._classes.isClosingClass);
@@ -96,6 +104,7 @@ export default class DiaModal {
       addClass(this._element, this._classes.isCloseClass);
       removeClass(this._root, 'diamodal-active');
       removeClass(this._root, 'diamodal-scrollbar-compensate');
+      this._onClose();
     }, this._transitionDuration);
   }
 
@@ -103,7 +112,7 @@ export default class DiaModal {
           content = this._content,
           boxSize = this._boxSize,
           transitionDuration = this._transitionDuration) {
-    return this._compileTemplate({
+    return this._template({
       title,
       content,
       boxSize,
@@ -116,6 +125,7 @@ export default class DiaModal {
       const htmlString = this.compile();
       this._element = createElementFromHTML(htmlString);
       this._root.appendChild(this._element);
+      this._onRender();
     }
   }
 }

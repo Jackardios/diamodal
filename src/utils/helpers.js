@@ -1,5 +1,5 @@
 function generateUID() {
-  return '_' + Math.random().toString(12).substr(2, 6);
+  return '_' + Math.random().toString(14).substr(2, 6);
 }
 
 function createElementFromHTML(htmlString) {

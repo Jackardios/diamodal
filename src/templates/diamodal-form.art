@@ -1,0 +1,68 @@
+<form action="{{ $data.action || '' }}"
+      method="{{ $data.method || '' }}"
+      enctype="{{ $data.enctype || '' }}"
+      class="diamodal-form"
+      data-diamodal-form
+      {{if $data.attributes }}
+        {{each $data.attributes }}
+          <% if (($value !== false) && (['action', 'method', 'enctype', 'class'].indexOf($index) === -1)) { %>
+            {{ $index }}="{{ $value }}"
+          <% } %>
+        {{/each}}
+      {{/if}}
+      >
+  {{if $data.inputs }}
+    {{each $data.inputs input index }}
+      {{if input.type }}
+        <div class="diamodal-form-input diamodal-form-input--fullwidth diamodal-form-input--{{ input.type }} {{ input.class || '' }}">
+          {{if input.type === "textarea" }}
+            <textarea
+              class="diamodal-form-input__input"
+              {{each input }}
+                <% if (($value !== false) && (['type', 'value', 'class', 'placeholder'].indexOf($index) === -1)) { %>
+                  {{ $index }}="{{ $value }}"
+                <% } %>
+              {{/each}}
+              >{{ input.value || '' }}</textarea>
+          
+          {{else if input.type === "select" }}
+            <select
+              class="diamodal-form-input__input"
+              {{each input }}
+                <% if (($value !== false) && (['type', 'options', 'class', 'placeholder'].indexOf($index) === -1)) { %>
+                  {{ $index }}="{{ $value }}"
+                <% } %>
+              {{/each}}
+              >
+              {{if input.options }}
+                {{each input.options option}}
+                  <option
+                    {{each option}}
+                      <% if (($value !== false) || ($index !== 'text')) { %>
+                        {{ $index }}="{{ $value }}"
+                      <% } %>
+                    {{/each}}
+                    >
+                    {{ option.text || option.value || '' }}
+                  </option>
+                {{/each}}
+              {{/if}}
+            </select>
+
+          {{else if ["text", "number", "email", "tel", "password", "file", "hidden", "checkbox", "radio"].indexOf(input.type) !== -1 }}
+            <input
+              class="diamodal-form-input__input"
+              {{each input }}
+                <% if (($value !== false)  && (['class', 'placeholder'].indexOf($index) === -1)) { %>
+                  {{ $index }}="{{ $value }}"
+                <% } %>
+              {{/each}}
+              >
+          {{/if}}
+          <label for="{{ input.id }}" class="diamodal-form-input__label">{{ input.placeholder || '' }}</label>
+        </div>
+      {{/if}}
+    {{/each}}
+  {{/if}}
+  <button type="submit" class="diamodal-form__submit-button" data-diamodal-form-submit>{{ $data.submitText }}</button>
+</form>

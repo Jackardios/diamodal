@@ -76,8 +76,8 @@
     -webkit-overflow-scrolling: touch;
     background-color: #fff;
     text-align: left;
-    transform: scale(0.86);
-    transition: transform .36s ease;
+    transform: scale(0.9);
+    transition: transform .24s ease;
     box-shadow: 10px 10px 30px -15px rgba(0, 0, 0, .4);
 
     &--small {
@@ -99,7 +99,7 @@
       align-items: stretch;
       height: 50px;
       padding-left: 30px;
-      border-bottom: 1px solid $color-gray--light;
+      border-bottom: 1px solid $diamodal-color-gray--light;
 
       @media only screen and (min-width: 768px) {
         padding-left: 40px;
@@ -152,7 +152,7 @@
       }
 
       &:focus {
-        color: rgba($color-primary, 1);
+        color: rgba($diamodal-color-primary, 1);
       }
     }
 

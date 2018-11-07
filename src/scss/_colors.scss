@@ -1,6 +1,8 @@
-$color-primary: #bea67c;
-$color-primary--dark: #a08556;
-$color-dark: #1d1d1d;
-$color-black: #000;
-$color-gray--light: #eff2f6;
-$color-gray--dark: #9c9c9c;
+$diamodal-color-primary: #2196f3 !default;
+$diamodal-color-primary--dark: #0069c0 !default;
+$diamodal-color-primary--light: #6ec6ff !default;
+$diamodal-color-accent: $diamodal-color-primary--dark !default;
+$diamodal-color-dark: #1d1d1d !default;
+$diamodal-color-gray--light: #eff2f6 !default;
+$diamodal-color-gray--dark: #9c9c9c !default;
+$diamodal-color-error: #f44336 !default;
