@@ -3,7 +3,7 @@ import "../src/scss/main.scss";
 
 // import components
 import { ready } from "../src/utils/helpers"; 
-import { DiaModal, DiaModalForm } from "../src/index";
+import { DiaModal, DiaModalForm } from "../lib/diamodal";
 
 ready(() => {
   const firstModal = new DiaModalForm({

@@ -4,8 +4,8 @@ const merge = require('webpack-merge');
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
-const CleanWebpackPlugin = require('clean-webpack-plugin');
-const HtmlWebPackPlugin = require("html-webpack-plugin");
+const pkg = require('./package.json');
+const libraryName = pkg.name;
 
 module.exports = (env, options) => {
   const isDevMode = (options.mode !== 'production');
@@ -15,8 +15,11 @@ module.exports = (env, options) => {
       diamodal: './src/index.js',
     },
     output: {
-      path: path.resolve(__dirname, 'dist'),
-      filename: '[name].js'
+      path: path.resolve(__dirname, 'lib'),
+      filename: libraryName + (isDevMode ? '.js' : '.min.js'),
+      library: libraryName,
+      libraryTarget: 'umd',
+      umdNamedDefine: true
     },
     module: {
       rules: [
@@ -30,7 +33,7 @@ module.exports = (env, options) => {
         {
           test: /\.(sa|sc|c)ss$/,
           use: [
-            isDevMode ? 'style-loader' : MiniCssExtractPlugin.loader,
+            MiniCssExtractPlugin.loader,
             'css-loader',
             'postcss-loader',
             'sass-loader',
@@ -41,7 +44,7 @@ module.exports = (env, options) => {
           use: [
             {
               loader: "html-loader",
-              options: { minimize: true }
+              options: { minimize: !isDevMode }
             }
           ]
         },
@@ -64,19 +67,19 @@ module.exports = (env, options) => {
       ]
     },
     plugins: [
-      new CleanWebpackPlugin([
-        'dist',
-        'build'
-      ]),
+      new MiniCssExtractPlugin({
+        filename: libraryName + (isDevMode ? '.css' : '.min.css'),
+      }),
     ],
+    resolve: {
+      modules: [path.resolve('./node_modules'), path.resolve('./src')],
+      extensions: ['.json', '.js']
+    }
   }
 
   const devConfig = {
     plugins: [
       new webpack.HotModuleReplacementPlugin(),
-      // new HtmlWebPackPlugin({
-      //   template: "./index.html",
-      // }),
     ],
     devtool: 'source-map',
     devServer: {
@@ -108,9 +111,6 @@ module.exports = (env, options) => {
         cache: true,
         parallel: true,
         sourceMap: true // set to true if you want JS source maps
-      }),
-      new MiniCssExtractPlugin({
-        filename: 'diamodal.css',
       }),
     ],
   }

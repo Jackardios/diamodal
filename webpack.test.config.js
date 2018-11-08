@@ -41,7 +41,7 @@ module.exports = (env, options) => {
           use: [
             {
               loader: "html-loader",
-              options: { minimize: true }
+              options: { minimize: !isDevMode }
             }
           ]
         },
