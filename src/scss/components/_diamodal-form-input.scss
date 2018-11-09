@@ -14,7 +14,7 @@ $input-focus-color: $diamodal-color-accent;
         margin-top: $input-font-size + 4px;
     }
 
-    &:not(&--select)::after {
+    &:not(&--select):not(&--radio):not(&--checkbox)::after {
         content: "";
         position: absolute;
         display: block;

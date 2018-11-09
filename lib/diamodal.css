@@ -197,7 +197,7 @@
   color: #1d1d1d; }
   .diamodal-form-input:not(:first-child) {
     margin-top: 20px; }
-  .diamodal-form-input:not(.diamodal-form-input--select)::after {
+  .diamodal-form-input:not(.diamodal-form-input--select):not(.diamodal-form-input--radio):not(.diamodal-form-input--checkbox)::after {
     content: "";
     position: absolute;
     display: block;
