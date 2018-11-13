@@ -3,13 +3,10 @@ import "./main.scss";
 
 // import components
 import {
-  ready
-} from "../src/utils/helpers";
-import {
   DiaModalForm
 } from "../lib/diamodal";
 
-ready(() => {
+document.addEventListener("DOMContentLoaded", function(event) {
   const firstModal = new DiaModalForm({
     title: "First Modal",
     triggerBtnSelector: ".open-modal-first",

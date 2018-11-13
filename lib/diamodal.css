@@ -20,6 +20,7 @@
   height: 100%;
   outline: none;
   opacity: 0;
+  font-family: inherit;
   background-color: rgba(0, 0, 0, 0.5);
   -webkit-backface-visibility: hidden;
   -webkit-tap-highlight-color: transparent;
@@ -79,6 +80,7 @@
     max-width: 100%;
     overflow: auto;
     -webkit-overflow-scrolling: touch;
+    color: #1d1d1d;
     background-color: #fff;
     text-align: left;
     -webkit-transform: scale(0.9);
@@ -206,7 +208,7 @@
     right: 0;
     width: 100%;
     height: 2px;
-    background-color: #0069c0;
+    background-color: #2196f3;
     -webkit-transform: scaleX(0);
        -moz-transform: scaleX(0);
         -ms-transform: scaleX(0);
@@ -252,7 +254,7 @@
     .diamodal-form-input--select .diamodal-form-input__input ::-ms-expand {
       display: none; }
     .diamodal-form-input--select .diamodal-form-input__input:hover {
-      border-color: #0069c0; }
+      border-color: #2196f3; }
   .diamodal-form-input--fullwidth {
     display: block !important;
     width: 100%; }
@@ -265,7 +267,7 @@
     left: 0;
     font-size: 16px;
     font-weight: normal;
-    color: #9c9c9c;
+    color: #888888;
     pointer-events: none;
     z-index: 1;
     white-space: nowrap;
@@ -301,7 +303,14 @@
     -o-transition: border-color .24s ease;
     -moz-transition: border-color .24s ease;
     transition: border-color .24s ease; }
-  @media only screen and (min-width: 768px) {
+
+body.diamodal-active {
+  height: auto; }
+
+body.diamodal-scrollbar-compensate {
+  overflow: hidden !important; }
+
+@media only screen and (min-width: 768px) {
         .diamodal-box__header {
           padding-left: 40px;
           height: 60px; }

@@ -12,7 +12,7 @@ function appendScrollbarCompensateStyleToHead(isMobile) {
   if(!isMobile) {
     const head = document.head || document.getElementsByTagName('head')[0];
     const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
-    const css = `.diamodal-scrollbar-compensate{margin-right:${scrollbarWidth}px;}`
+    const css = `.diamodal-scrollbar-compensate{margin-right:${scrollbarWidth}px!important;}`
     const style = document.createElement('style');
 
     style.type = 'text/css';

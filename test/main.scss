@@ -2,3 +2,23 @@ $diamodal-color-primary: #a00ddd !default;
 $diamodal-color-primary--dark: #8324ac !default;
 $diamodal-color-primary--light: #ac2be4 !default;
 @import "../src/scss/main";
+
+.wrapper {
+  height: 2000px;
+  margin: 0;
+}
+
+body {
+  margin: 0;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-button {
+  background: #ccc;
+}
+::-webkit-scrollbar-track-piece {
+  background: #888;
+}
