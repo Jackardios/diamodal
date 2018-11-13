@@ -6,7 +6,6 @@ import {
   ready
 } from "../src/utils/helpers";
 import {
-  DiaModal,
   DiaModalForm
 } from "../lib/diamodal";
 

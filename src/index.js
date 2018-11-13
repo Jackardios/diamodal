@@ -5,7 +5,6 @@ import "./scss/main.scss";
 import "./polyfills/object-assign";
 
 // import components
-import { ready } from "./utils/helpers"; 
 import DiaModal from "./components/DiaModal";
 import DiaModalForm from "./components/DiaModalForm";
 
@@ -28,7 +27,7 @@ function appendScrollbarCompensateStyleToHead(isMobile) {
   }
 }
 
-ready(() => {
+document.addEventListener("DOMContentLoaded", function(event) {
   const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
   appendScrollbarCompensateStyleToHead(isMobile);

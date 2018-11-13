@@ -8,6 +8,7 @@
   height: 100%;
   outline: none;
   opacity: 0;
+  font-family: $diamodal-base-font-family;
   background-color: rgba(#000, 0.5);
   -webkit-backface-visibility: hidden;
   -webkit-tap-highlight-color: transparent;
@@ -74,6 +75,7 @@
     max-width: 100%;
     overflow: auto;
     -webkit-overflow-scrolling: touch;
+    color: $diamodal-default-text-color;
     background-color: #fff;
     text-align: left;
     transform: scale(0.9);

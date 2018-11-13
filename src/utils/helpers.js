@@ -24,14 +24,6 @@ function removeClass(el, className) {
     el.className = el.className.replace(new RegExp('(^|\\b)' + className.split(' ').join('|') + '(\\b|$)', 'gi'), ' ');
 }
 
-function ready(fn) {
-  if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading"){
-    fn();
-  } else {
-    document.addEventListener('DOMContentLoaded', fn);
-  }
-}
-
 function addDelegatedEventListener(element, eventName, selector, handler, useCapture = false) {
   element.addEventListener(eventName, function (e) {
     for (var target = e.target; target && target != this; target = target.parentNode) {
@@ -49,6 +41,5 @@ export {
   createElementFromHTML,
   addClass,
   removeClass,
-  ready,
   addDelegatedEventListener
 };
