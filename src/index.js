@@ -1,6 +1,9 @@
 // import styles
 import "./scss/main.scss";
 
+// import polyfills
+import "./polyfills/object-assign";
+
 // import components
 import { ready } from "./utils/helpers"; 
 import DiaModal from "./components/DiaModal";

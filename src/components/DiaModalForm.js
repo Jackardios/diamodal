@@ -21,9 +21,7 @@ function wrapInputsToForm(html) {
 
 class DiaModalForm extends DiaModal {
   constructor({
-    template = require("../templates/diamodal.art"),
     formTemplate = require("../templates/diamodal-form.art"),
-    title = "",
     action = "",
     method = "GET",
     enctype = "",
@@ -31,18 +29,20 @@ class DiaModalForm extends DiaModal {
     inputs = [],
     submitText = "Отправить",
     onSubmit = f=>f,
+    ...otherOptions
   }) {
-
     const formHTML = formTemplate({
       action,
+      method,
+      enctype,
+      attributes,
       inputs: addIdsToInputs(inputs),
       submitText
     });
 
     super({
-      template,
-      title,
       content: formHTML,
+      ...otherOptions,
     });
 
     this._formTemplate = formTemplate;

@@ -1,4 +1,4 @@
-import { createElementFromHTML, addClass, removeClass } from "../utils/helpers";
+import { createElementFromHTML, addClass, removeClass, addDelegatedEventListener } from "../utils/helpers";
 
 export default class DiaModal {
   constructor({
@@ -10,6 +10,7 @@ export default class DiaModal {
     isOpenClass = "diamodal--is-open",
     isCloseClass = "diamodal--is-close",
     isClosingClass = "diamodal--is-closing",
+    triggerBtnSelector = null,
     openOnInit = false,
     destroyOnClose = false,
     transitionDuration = 480,
@@ -32,6 +33,7 @@ export default class DiaModal {
     this._boxSize = boxSize;
     this._openOnInit = openOnInit;
     this._destroyOnClose = destroyOnClose;
+    this._triggerBtnSelector = triggerBtnSelector;
 
     this._onInit = onInit;
     this._onDestroy = onDestroy;
@@ -69,6 +71,12 @@ export default class DiaModal {
 
     if (this._element) {
       this._element.addEventListener('click', (event) => this.close());
+    }
+
+    if (this._triggerBtnSelector) {
+      addDelegatedEventListener(document, 'click', this._triggerBtnSelector, () => {
+        this.open();
+      })
     }
   }
 
