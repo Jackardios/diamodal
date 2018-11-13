@@ -55,24 +55,6 @@ ready(() => {
           placeholder: "checkbox_placeholder", // default: ""
           required:    false, // default: false
         },
-        {
-          type:        "select", // default: text (text | number | email | tel | textarea | radio | checkbox | select)
-          name:        "select_name", // default: ""
-          value:       "select_value", // default: ""
-          label:       "select_label", // default: ""
-          placeholder: "select_placeholder", // default: "",
-          options: [
-            {
-              "text": "Первый",
-              "value": "first",
-            },
-            {
-              "text": "Второй",
-              "value": "second",
-            },
-          ],
-          required:    false, // default: false
-        },
       ]
     });
   

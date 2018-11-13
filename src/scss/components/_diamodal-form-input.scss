@@ -41,7 +41,6 @@ $input-focus-color: $diamodal-color-accent;
     &--textarea &__label,
     &--select &__label {
         transform: scale(.85) translateY(-50%) !important;
-        top: 0 !important;
     }
 
     &--select &__input {
@@ -74,7 +73,7 @@ $input-focus-color: $diamodal-color-accent;
         position: absolute;
         background: #fff;
         margin: 0 0 0 10px;
-        top: $input-padding-top;
+        top: 0;
         left: 0;
         font-size: $input-font-size;
         font-weight: normal;
@@ -84,7 +83,7 @@ $input-focus-color: $diamodal-color-accent;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
-        transform: scale(1) translateY(0);
+        transform: scale(1) translateY(($input-padding-top + $input-font-size + 10px ) / 2 - ($input-font-size / 2));
         transform-origin: 0;
         transition: all .24s ease;
     }
