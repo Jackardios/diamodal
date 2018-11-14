@@ -176,6 +176,13 @@
     .diamodal-box__content {
       padding: 30px; }
 
+.diamodal-form__required-label-text {
+  border-top: 1px solid #eeeeee;
+  font-size: 16px;
+  color: #888888;
+  margin-top: 32px;
+  padding-top: 8px; }
+
 .diamodal-form__submit-button {
   cursor: pointer;
   display: block;
@@ -376,6 +383,9 @@ body.diamodal-active {
 
 body.diamodal-scrollbar-compensate {
   overflow: hidden !important; }
+
+.diamodal-color-error {
+  color: #f44336; }
 
 @media only screen and (min-width: 768px) {
         .diamodal-box__header {
