@@ -7,7 +7,7 @@ import {
 } from "../src/index";
 
 document.addEventListener("DOMContentLoaded", function(event) {
-  const firstModal = new DiaModalForm({
+  window.firstModal = new DiaModalForm({
     title: "First Modal",
     triggerBtnSelector: ".open-modal-first",
     action: "/",

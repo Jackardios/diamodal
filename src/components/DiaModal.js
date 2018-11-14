@@ -46,6 +46,28 @@ export default class DiaModal {
     this.init(openOnInit);
   }
 
+  get title() {
+    return this._title;
+  }
+
+  set title(newTitle) {
+    this._title = newTitle;
+    if (this.titleContainer) {
+      this.titleContainer.innerHTML = newTitle;
+    }
+  }
+
+  get content() {
+    return this._content;
+  }
+
+  set content(newContent) {
+    this._content = newContent;
+    if (this.contentContainer) {
+      this.contentContainer.innerHTML = newContent;
+    }
+  }
+
   init(openOnInit) {
     this.render();
     if (this._element) {
@@ -54,6 +76,9 @@ export default class DiaModal {
         this.open();
       }
     }
+    
+    this.titleContainer = this._root.querySelector('[data-diamodal-title]');
+    this.contentContainer = this._root.querySelector('[data-diamodal-content]');
     this._onInit();
   }
 
