@@ -12,10 +12,10 @@ module.exports = (env, options) => {
 
   const commonConfig = {
     entry: {
-      test: './test/index.js',
+      test: './example/index.js',
     },
     output: {
-      path: path.resolve(__dirname, 'test-build'),
+      path: path.resolve(__dirname, 'example-build'),
       filename: '[name].js'
     },
     module: {
@@ -65,7 +65,7 @@ module.exports = (env, options) => {
     },
     plugins: [
       new CleanWebpackPlugin([
-        'test-build',
+        'example-build',
       ]),
     ],
   }
@@ -74,7 +74,7 @@ module.exports = (env, options) => {
     plugins: [
       new webpack.HotModuleReplacementPlugin(),
       new HtmlWebPackPlugin({
-        template: "./test/index.html",
+        template: "./example/index.html",
       }),
     ],
     devtool: 'source-map',
@@ -109,7 +109,7 @@ module.exports = (env, options) => {
         sourceMap: true // set to true if you want JS source maps
       }),
       new MiniCssExtractPlugin({
-        filename: 'diamodal.css',
+        filename: 'example.css',
       }),
     ],
   }
