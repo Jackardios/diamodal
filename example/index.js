@@ -4,7 +4,7 @@ import "./main.scss";
 // import components
 import {
   DiaModalForm
-} from "../lib/diamodal";
+} from "../src/index";
 
 document.addEventListener("DOMContentLoaded", function(event) {
   const firstModal = new DiaModalForm({

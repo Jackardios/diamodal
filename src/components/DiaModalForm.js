@@ -29,6 +29,8 @@ class DiaModalForm extends DiaModal {
     inputs = [],
     submitText = "Отправить",
     submitButtomClass = "diamodal-form__submit-button",
+    addRequiredLabel = false,
+    requiredLabelText = "Обязательные для заполнения поля",
     onSubmit = f=>f,
     ...otherOptions
   }) {
@@ -40,6 +42,8 @@ class DiaModalForm extends DiaModal {
       inputs: addIdsToInputs(inputs),
       submitText,
       submitButtomClass,
+      addRequiredLabel,
+      requiredLabelText,
     });
 
     super({

@@ -59,11 +59,13 @@
               {{/each}}
               >
           {{/if}}
-          <label for="{{ input.id }}" class="diamodal-form-input__label">{{ input.placeholder || '' }}</label>
+          <label for="{{ input.id }}" class="diamodal-form-input__label">{{ input.placeholder || '' }}{{@ ($data.addRequiredLabel && input.required && (["checkbox", "radio"].indexOf(input.type) === -1)) ? '<span class="diamodal-color-error">*</span>' : '' }}</label>
         </div>
       {{/if}}
     {{/each}}
   {{/if}}
-
+  {{if ($data.addRequiredLabel && $data.requiredLabelText)}}
+    <div class="diamodal-form__required-label-text"><span class="diamodal-color-error">*</span>{{@ $data.requiredLabelText}}</div>
+  {{/if}}
   <button type="submit" class="{{ $data.submitButtomClass }}" data-diamodal-form-submit>{{ $data.submitText }}</button>
 </form>

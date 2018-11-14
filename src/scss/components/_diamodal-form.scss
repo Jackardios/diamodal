@@ -1,4 +1,13 @@
 .diamodal-form {
+
+  &__required-label-text {
+    border-top: 1px solid $diamodal-color-gray--light;
+    font-size: $diamodal-base-font-size;
+    color: $diamodal-secondary-text-color;
+    margin-top: 32px;
+    padding-top: 8px;
+  }
+
   &__submit-button {
     cursor: pointer;
     display: block;
