@@ -11,6 +11,7 @@ export default class DiaModal {
     isCloseClass = "diamodal--is-close",
     isClosingClass = "diamodal--is-closing",
     triggerBtnSelector = null,
+    closeOnEscape = true,
     openOnInit = false,
     destroyOnClose = false,
     transitionDuration = 480,
@@ -31,6 +32,7 @@ export default class DiaModal {
     this._title = title;
     this._content = content;
     this._boxSize = boxSize;
+    this._closeOnEscape = closeOnEscape;
     this._openOnInit = openOnInit;
     this._destroyOnClose = destroyOnClose;
     this._triggerBtnSelector = triggerBtnSelector;
@@ -77,6 +79,21 @@ export default class DiaModal {
       addDelegatedEventListener(document, 'click', this._triggerBtnSelector, () => {
         this.open();
       })
+    }
+
+    if (this._closeOnEscape) {
+      document.addEventListener('keydown', (evt) => {
+        evt = evt || window.event;
+        var isEscape = false;
+        if ("key" in evt) {
+          isEscape = (evt.key == "Escape" || evt.key == "Esc");
+        } else {
+          isEscape = (evt.keyCode == 27);
+        }
+        if (isEscape) {
+          this.close();
+        }
+      });
     }
   }
 

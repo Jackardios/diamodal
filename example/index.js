@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
         value: "radio_value", // default: ""
         label: "radio_label", // default: ""
         placeholder: "radio_placeholder", // default: ""
-        required: true, // default: false
+        required: false, // default: false
       },
       {
         type: "checkbox", // default: text (text | number | email | tel | textarea | radio | checkbox | select)
@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
         value: "checkbox_value", // default: ""
         label: "checkbox_label", // default: ""
         placeholder: "checkbox_placeholder", // default: ""
-        required: false, // default: false
+        required: true, // default: false
       },
     ]
   });

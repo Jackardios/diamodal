@@ -114,6 +114,11 @@ $diamodal-input-label-font-color: $diamodal-secondary-text-color !default;
         .diamodal-form-input__input {
             @extend %hidden-input;
 
+            &:focus ~ .diamodal-form-input__label::before {
+                border-color: $diamodal-input-focus-line-color;
+                box-shadow: 0 0 24px rgba($diamodal-input-focus-line-color, .25);
+            }
+
             &:checked ~ .diamodal-form-input__label::after {
                 transform: scale(0.6);
             }
@@ -138,7 +143,8 @@ $diamodal-input-label-font-color: $diamodal-secondary-text-color !default;
 
             &::before {
                 border: 1px solid $diamodal-input-neutral-line-color;
-                transition: border-color .08s ease;
+                transition: box-shadow .16s ease,
+                            border-color .08s ease;
             }
 
             &::after {
