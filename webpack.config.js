@@ -44,7 +44,7 @@ module.exports = (env, options) => {
           use: [
             {
               loader: "html-loader",
-              options: { minimize: !isDevMode }
+              options: { minimize: true }
             }
           ]
         },
@@ -54,7 +54,7 @@ module.exports = (env, options) => {
           options: {
             // art-template options (if necessary)
             // @see https://github.com/aui/art-template
-            minimize: !isDevMode,
+            minimize: true,
             htmlMinifierOptions: {
                 collapseWhitespace: true,
                 minifyCSS: true,
