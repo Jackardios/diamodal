@@ -28,6 +28,7 @@ class DiaModalForm extends DiaModal {
     attributes = [],
     inputs = [],
     submitText = "Отправить",
+    submitButtomClass = "diamodal-form__submit-button",
     onSubmit = f=>f,
     ...otherOptions
   }) {
@@ -37,7 +38,8 @@ class DiaModalForm extends DiaModal {
       enctype,
       attributes,
       inputs: addIdsToInputs(inputs),
-      submitText
+      submitText,
+      submitButtomClass,
     });
 
     super({

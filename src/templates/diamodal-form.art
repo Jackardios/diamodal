@@ -64,5 +64,6 @@
       {{/if}}
     {{/each}}
   {{/if}}
-  <button type="submit" class="diamodal-form__submit-button" data-diamodal-form-submit>{{ $data.submitText }}</button>
+
+  <button type="submit" class="{{ $data.submitButtonClass }}" data-diamodal-form-submit>{{ $data.submitText }}</button>
 </form>
