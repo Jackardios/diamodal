@@ -22,22 +22,16 @@ function wrapInputsToForm(html) {
 class DiaModalForm extends DiaModal {
   constructor({
     formTemplate = require("../templates/diamodal-form.art"),
-    action = "",
-    method = "GET",
-    enctype = "",
     attributes = [],
     inputs = [],
     submitText = "Отправить",
     submitButtomClass = "diamodal-form__submit-button",
-    addRequiredLabel = false,
+    addRequiredLabel = true,
     requiredLabelText = "Обязательные для заполнения поля",
     onSubmit = f=>f,
     ...otherOptions
   }) {
     const formHTML = formTemplate({
-      action,
-      method,
-      enctype,
       attributes,
       inputs: addIdsToInputs(inputs),
       submitText,

@@ -101,7 +101,8 @@ export default class DiaModal {
     }
 
     if (this._triggerBtnSelector) {
-      addDelegatedEventListener(document, 'click', this._triggerBtnSelector, () => {
+      addDelegatedEventListener(document, 'click', this._triggerBtnSelector, (e) => {
+        e.preventDefault();
         this.open();
       })
     }

@@ -1,11 +1,8 @@
-<form action="{{ $data.action || '' }}"
-      method="{{ $data.method || '' }}"
-      enctype="{{ $data.enctype || '' }}"
-      class="diamodal-form"
+<form class="diamodal-form {{ ($data.attributes && $data.attributes.class) ? $data.attributes.class : '' }}"
       data-diamodal-form
       {{if $data.attributes }}
         {{each $data.attributes }}
-          <% if (($value !== false) && (['action', 'method', 'enctype', 'class'].indexOf($index) === -1)) { %>
+          <% if (($value !== false) && ($index !== 'class')) { %>
             {{ $index }}="{{ $value }}"
           <% } %>
         {{/each}}
@@ -13,6 +10,7 @@
       >
   {{if $data.inputs }}
     {{each $data.inputs input index }}
+      <% input.type = input.type || "text" %>
       {{if input.type }}
         <div class="diamodal-form-input diamodal-form-input--fullwidth diamodal-form-input--{{ input.type }} {{ input.class || '' }}">
           {{if input.type === "textarea" }}
@@ -38,7 +36,7 @@
                 {{each input.options option}}
                   <option
                     {{each option}}
-                      <% if (($value !== false) || ($index !== 'text')) { %>
+                      <% if (($value !== false) && ($index !== 'text')) { %>
                         {{ $index }}="{{ $value }}"
                       <% } %>
                     {{/each}}
