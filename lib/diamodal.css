@@ -19,6 +19,13 @@
   position: absolute;
   z-index: -1; }
 
+/* ------------------------------------------------- */
+/* ==from https://codepen.io/jakob-e/pen/doMoML       */
+/* ------------------------------------------------- */
+/* ------------- */
+/* ==end         */
+/* ------------- */
+/* custom mixin to replace a defined fill color with another one */
 .diamodal {
   position: fixed;
   z-index: 9999;
@@ -354,7 +361,7 @@
        -moz-border-radius: 3px;
             border-radius: 3px; }
   .diamodal-form-input--checkbox .diamodal-form-input__label::after {
-    background-image: url('data:image/svg+xml;utf8,<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve"><path fill="#2196f3" d="M504.502,75.496c-9.997-9.998-26.205-9.998-36.204,0L161.594,382.203L43.702,264.311c-9.997-9.998-26.205-9.997-36.204,0c-9.998,9.997-9.998,26.205,0,36.203l135.994,135.992c9.994,9.997,26.214,9.99,36.204,0L504.502,111.7C514.5,101.703,514.499,85.494,504.502,75.496z"/></svg>'); }
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 512 512' style='enable-background:new 0 0 512 512;' xml:space='preserve'%3E%3Cpath fill='%232196f3' d='M504.502,75.496c-9.997-9.998-26.205-9.998-36.204,0L161.594,382.203L43.702,264.311c-9.997-9.998-26.205-9.997-36.204,0c-9.998,9.997-9.998,26.205,0,36.203l135.994,135.992c9.994,9.997,26.214,9.99,36.204,0L504.502,111.7C514.5,101.703,514.499,85.494,504.502,75.496z'/%3E%3C/svg%3E"); }
   .diamodal-form-input--radio .diamodal-form-input__label::before,
   .diamodal-form-input--radio .diamodal-form-input__label::after {
     -webkit-border-radius: 50%;
