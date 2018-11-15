@@ -11,16 +11,17 @@ document.addEventListener("DOMContentLoaded", function (event) {
   window.firstModal = new DiaModalForm({
     title: "First Modal",
     triggerBtnSelector: ".open-modal-first",
+    zIndex: 10000, // default: 9999
     inputs: [{
         type: "text", // default: text (text | number | email | tel | textarea | radio | checkbox | select)
         name: "text_name", // default: ""
         value: "text_value", // default: ""
         placeholder: "text_placeholder", // default: ""
-        tabindex: "",
-        required: true, // default: false,
-        disabled: false,
-        autofocus: false,
-        readOnly: false,
+        tabindex: "", // default: null,
+        required: true, // default: null,
+        disabled: false, // default: null,
+        autofocus: false, // default: null,
+        readOnly: false, // default: null,
         // other attributes
       },
       {

@@ -1,7 +1,8 @@
 <div class="diamodal diamodal--is-close" role="dialog" tabindex="-1"
      style="-webkit-transition-duration: {{ $data.transitionDuration }}ms;
                  -o-transition-duration: {{ $data.transitionDuration }}ms;
-                    transition-duration: {{ $data.transitionDuration }}ms;">
+                    transition-duration: {{ $data.transitionDuration }}ms;
+                    z-index: {{ $data.zIndex || 9999 }};">
   <div class="diamodal__container"><div class="diamodal-box diamodal-box--{{ $data.boxSize }}">
       <div class="diamodal-box__header">
         <div class="diamodal-box__title" data-diamodal-title>{{@ $data.title }}</div>

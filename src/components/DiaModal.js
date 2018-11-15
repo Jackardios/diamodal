@@ -1,4 +1,4 @@
-import { createElementFromHTML, addClass, removeClass, addDelegatedEventListener } from "../utils/helpers";
+import { generateUID, createElementFromHTML, addClass, removeClass, addDelegatedEventListener } from "../utils/helpers";
 
 export default class DiaModal {
   constructor({
@@ -15,6 +15,7 @@ export default class DiaModal {
     openOnInit = false,
     destroyOnClose = false,
     transitionDuration = 480,
+    zIndex = 9999,
     onInit = f=>f,
     onDestroy = f=>f,
     onRender = f=>f,
@@ -27,6 +28,7 @@ export default class DiaModal {
       isCloseClass,
       isClosingClass,
     }
+    this._uid = generateUID();
     this._root = root;
     this._template = template;
     this._title = title;
@@ -36,6 +38,7 @@ export default class DiaModal {
     this._openOnInit = openOnInit;
     this._destroyOnClose = destroyOnClose;
     this._triggerBtnSelector = triggerBtnSelector;
+    this._zIndex = zIndex;
 
     this._onInit = onInit;
     this._onDestroy = onDestroy;
@@ -104,7 +107,7 @@ export default class DiaModal {
       addDelegatedEventListener(document, 'click', this._triggerBtnSelector, (e) => {
         e.preventDefault();
         this.open();
-      })
+      }, true)
     }
 
     if (this._closeOnEscape) {
@@ -135,6 +138,14 @@ export default class DiaModal {
     removeClass(this._element, this._classes.isOpenClass);
     addClass(this._root, 'diamodal-active');
     addClass(this._root, 'diamodal-scrollbar-compensate');
+    if (window) {
+      if (!window.__diamodalOpenedModals) {
+        window.__diamodalOpenedModals = [];
+      }
+      if (window.__diamodalOpenedModals.indexOf(this._uid) === -1) {
+        window.__diamodalOpenedModals.push(this._uid);
+      }
+    }
 
     this._currentTimeout = setTimeout(() => {
       addClass(this._element, this._classes.isOpenClass);
@@ -153,8 +164,16 @@ export default class DiaModal {
       }
       removeClass(this._element, this._classes.isClosingClass);
       addClass(this._element, this._classes.isCloseClass);
-      removeClass(this._root, 'diamodal-active');
-      removeClass(this._root, 'diamodal-scrollbar-compensate');
+      if (window) {
+        if (window.__diamodalOpenedModals && window.__diamodalOpenedModals.length) {
+          window.__diamodalOpenedModals.splice(window.__diamodalOpenedModals.indexOf(this._uid), 1);
+        }
+
+        if (!window.__diamodalOpenedModals || !window.__diamodalOpenedModals.length) {
+          removeClass(this._root, 'diamodal-active');
+          removeClass(this._root, 'diamodal-scrollbar-compensate');
+        }
+      }
       this._onClose();
     }, this._transitionDuration);
   }
@@ -162,11 +181,13 @@ export default class DiaModal {
   compile(title = this._title,
           content = this._content,
           boxSize = this._boxSize,
+          zIndex = this._zIndex,
           transitionDuration = this._transitionDuration) {
     return this._template({
       title,
       content,
       boxSize,
+      zIndex,
       transitionDuration
     });
   }

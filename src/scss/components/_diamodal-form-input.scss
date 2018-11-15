@@ -83,6 +83,7 @@ $diamodal-input-label-font-color: $diamodal-secondary-text-color !default;
 
     &:not(&--checkbox):not(&--radio):not(&--select) &__input {
         background: none;
+        outline: none;
     }
 
     &--checkbox, &--radio {
