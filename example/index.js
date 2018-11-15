@@ -76,7 +76,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
     ]
   });
 
-  const secondModal = new DiaModal({
+  window.secondModal = new DiaModal({
     title: "Second Modal",
     triggerBtnSelector: ".open-modal-second",
     content: "<button class='open-modal-first'>Open first modal</button>"
