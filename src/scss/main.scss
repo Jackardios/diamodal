@@ -2,6 +2,8 @@
 @import "./colors";
 @import "./variables";
 
+@import "./mixins/svg-url";
+
 @import "./components/diamodal";
 @import "./components/diamodal-form";
 @import "./components/diamodal-form-input";
