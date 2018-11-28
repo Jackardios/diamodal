@@ -13,7 +13,7 @@
   -webkit-backface-visibility: hidden;
   -webkit-tap-highlight-color: transparent;
   touch-action: manipulation;
-  
+
   // GPU
   transform: translateZ(0);
 
@@ -60,7 +60,7 @@
 
     &::before {
       @extend %inline-block-middle;
-      content: '';
+      content: "";
       width: 0;
       height: 100%;
       font-size: 0;
@@ -79,8 +79,8 @@
     background-color: #fff;
     text-align: left;
     transform: scale(0.9);
-    transition: transform .24s ease;
-    box-shadow: 10px 10px 30px -15px rgba(0, 0, 0, .4);
+    transition: transform 0.24s ease;
+    box-shadow: 10px 10px 30px -15px rgba(0, 0, 0, 0.4);
 
     &--small {
       max-width: 540px;
@@ -93,7 +93,7 @@
     &--large {
       max-width: 960px;
     }
-  
+
     &__header {
       display: flex;
       flex-direction: row;
@@ -135,7 +135,7 @@
       outline: none;
       background: none;
       opacity: 0.3;
-      transition: opacity .24s ease;
+      transition: opacity 0.24s ease;
 
       svg {
         display: block;

@@ -1,4 +1,10 @@
-import { generateUID, createElementFromHTML, addClass, removeClass, addDelegatedEventListener } from "../utils/helpers";
+import {
+  generateUID,
+  createElementFromHTML,
+  addClass,
+  removeClass,
+  addDelegatedEventListener
+} from "../utils/helpers";
 
 export default class DiaModal {
   constructor({
@@ -6,7 +12,7 @@ export default class DiaModal {
     title = "",
     content = "",
     boxSize = "small", // small | medium | large
-    root = (document) ? document.body : null,
+    root = document ? document.body : null,
     isOpenClass = "diamodal--is-open",
     isCloseClass = "diamodal--is-close",
     isClosingClass = "diamodal--is-closing",
@@ -16,18 +22,18 @@ export default class DiaModal {
     destroyOnClose = false,
     transitionDuration = 480,
     zIndex = 9999,
-    onInit = f=>f,
-    onDestroy = f=>f,
-    onRender = f=>f,
-    onOpen = f=>f,
-    onClose = f=>f,
+    onInit = f => f,
+    onDestroy = f => f,
+    onRender = f => f,
+    onOpen = f => f,
+    onClose = f => f
   }) {
     this._transitionDuration = transitionDuration;
     this._classes = {
       isOpenClass,
       isCloseClass,
-      isClosingClass,
-    }
+      isClosingClass
+    };
     this._uid = generateUID();
     this._root = root;
     this._template = template;
@@ -56,9 +62,13 @@ export default class DiaModal {
       if (openOnInit) {
         this.open();
       }
-    
-      this.titleContainer = this._element.querySelector('[data-diamodal-title]');
-      this.contentContainer = this._element.querySelector('[data-diamodal-content]');
+
+      this.titleContainer = this._element.querySelector(
+        "[data-diamodal-title]"
+      );
+      this.contentContainer = this._element.querySelector(
+        "[data-diamodal-content]"
+      );
     }
     this._onInit();
   }
@@ -86,38 +96,44 @@ export default class DiaModal {
   }
 
   _attachHandlers() {
-    this._box = this._element.querySelector('.diamodal-box');
+    this._box = this._element.querySelector(".diamodal-box");
     if (this._box) {
       var closeButtons = this._box.querySelectorAll("[data-diamodal-close]");
 
       for (let i = 0; i < closeButtons.length; ++i) {
-        closeButtons[i].addEventListener('click', (event) => this.close());
+        closeButtons[i].addEventListener("click", event => this.close());
       }
-  
-      this._box.addEventListener('click', (event) => {
+
+      this._box.addEventListener("click", event => {
         event.stopPropagation();
       });
     }
 
     if (this._element) {
-      this._element.addEventListener('click', (event) => this.close());
+      this._element.addEventListener("click", event => this.close());
     }
 
     if (this._triggerBtnSelector) {
-      addDelegatedEventListener(document, 'click', this._triggerBtnSelector, (e) => {
-        e.preventDefault();
-        this.open();
-      }, true)
+      addDelegatedEventListener(
+        document,
+        "click",
+        this._triggerBtnSelector,
+        e => {
+          e.preventDefault();
+          this.open();
+        },
+        true
+      );
     }
 
     if (this._closeOnEscape) {
-      document.addEventListener('keydown', (evt) => {
+      document.addEventListener("keydown", evt => {
         evt = evt || window.event;
         var isEscape = false;
         if ("key" in evt) {
-          isEscape = (evt.key == "Escape" || evt.key == "Esc");
+          isEscape = evt.key == "Escape" || evt.key == "Esc";
         } else {
-          isEscape = (evt.keyCode == 27);
+          isEscape = evt.keyCode == 27;
         }
         if (isEscape) {
           this.close();
@@ -136,8 +152,8 @@ export default class DiaModal {
     removeClass(this._element, this._classes.isCloseClass);
     removeClass(this._element, this._classes.isClosingClass);
     removeClass(this._element, this._classes.isOpenClass);
-    addClass(this._root, 'diamodal-active');
-    addClass(this._root, 'diamodal-scrollbar-compensate');
+    addClass(this._root, "diamodal-active");
+    addClass(this._root, "diamodal-scrollbar-compensate");
     if (window) {
       if (!window.__diamodalOpenedModals) {
         window.__diamodalOpenedModals = [];
@@ -151,13 +167,13 @@ export default class DiaModal {
       addClass(this._element, this._classes.isOpenClass);
       this._onOpen();
     }, 10);
-  }
+  };
 
   close = (destroyOnClose = this._destroyOnClose) => {
     removeClass(this._element, this._classes.isOpenClass);
     removeClass(this._element, this._classes.isCloseClass);
     addClass(this._element, this._classes.isClosingClass);
-    
+
     this._currentTimeout = setTimeout(() => {
       if (destroyOnClose) {
         this.destroy();
@@ -165,24 +181,35 @@ export default class DiaModal {
       removeClass(this._element, this._classes.isClosingClass);
       addClass(this._element, this._classes.isCloseClass);
       if (window) {
-        if (window.__diamodalOpenedModals && window.__diamodalOpenedModals.length) {
-          window.__diamodalOpenedModals.splice(window.__diamodalOpenedModals.indexOf(this._uid), 1);
+        if (
+          window.__diamodalOpenedModals &&
+          window.__diamodalOpenedModals.length
+        ) {
+          window.__diamodalOpenedModals.splice(
+            window.__diamodalOpenedModals.indexOf(this._uid),
+            1
+          );
         }
 
-        if (!window.__diamodalOpenedModals || !window.__diamodalOpenedModals.length) {
-          removeClass(this._root, 'diamodal-active');
-          removeClass(this._root, 'diamodal-scrollbar-compensate');
+        if (
+          !window.__diamodalOpenedModals ||
+          !window.__diamodalOpenedModals.length
+        ) {
+          removeClass(this._root, "diamodal-active");
+          removeClass(this._root, "diamodal-scrollbar-compensate");
         }
       }
       this._onClose();
     }, this._transitionDuration);
-  }
+  };
 
-  compile(title = this._title,
-          content = this._content,
-          boxSize = this._boxSize,
-          zIndex = this._zIndex,
-          transitionDuration = this._transitionDuration) {
+  compile(
+    title = this._title,
+    content = this._content,
+    boxSize = this._boxSize,
+    zIndex = this._zIndex,
+    transitionDuration = this._transitionDuration
+  ) {
     return this._template({
       title,
       content,
