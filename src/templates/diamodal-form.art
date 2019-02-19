@@ -57,7 +57,7 @@
               {{/each}}
               >
           {{/if}}
-          <label for="{{ input.id }}" class="diamodal-form-input__label">{{ input.placeholder || '' }}{{@ ($data.addRequiredLabel && input.required && (["checkbox", "radio"].indexOf(input.type) === -1)) ? '<span class="diamodal-color-error">*</span>' : '' }}</label>
+          <label for="{{ input.id }}" class="diamodal-form-input__label">{{@ input.placeholder || '' }}{{@ ($data.addRequiredLabel && input.required && (["checkbox", "radio"].indexOf(input.type) === -1)) ? '<span class="diamodal-color-error">*</span>' : '' }}</label>
         </div>
       {{/if}}
     {{/each}}
