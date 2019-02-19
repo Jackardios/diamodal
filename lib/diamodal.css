@@ -84,7 +84,7 @@
     white-space: normal;
     text-align: center; }
     .diamodal__container::before {
-      content: '';
+      content: "";
       width: 0;
       height: 100%;
       font-size: 0; }
@@ -103,12 +103,12 @@
         -ms-transform: scale(0.9);
          -o-transform: scale(0.9);
             transform: scale(0.9);
-    -webkit-transition: -webkit-transform .24s ease;
-    transition: -webkit-transform .24s ease;
-    -o-transition: -o-transform .24s ease;
-    -moz-transition: transform .24s ease, -moz-transform .24s ease;
-    transition: transform .24s ease;
-    transition: transform .24s ease, -webkit-transform .24s ease, -moz-transform .24s ease, -o-transform .24s ease;
+    -webkit-transition: -webkit-transform 0.24s ease;
+    transition: -webkit-transform 0.24s ease;
+    -o-transition: -o-transform 0.24s ease;
+    -moz-transition: transform 0.24s ease, -moz-transform 0.24s ease;
+    transition: transform 0.24s ease;
+    transition: transform 0.24s ease, -webkit-transform 0.24s ease, -moz-transform 0.24s ease, -o-transform 0.24s ease;
     -webkit-box-shadow: 10px 10px 30px -15px rgba(0, 0, 0, 0.4);
        -moz-box-shadow: 10px 10px 30px -15px rgba(0, 0, 0, 0.4);
             box-shadow: 10px 10px 30px -15px rgba(0, 0, 0, 0.4); }
@@ -139,7 +139,8 @@
          -moz-box-align: stretch;
           -ms-flex-align: stretch;
               align-items: stretch;
-      height: 50px;
+      min-height: 50px;
+      height: auto;
       padding-left: 30px;
       border-bottom: 1px solid #eeeeee; }
     .diamodal-box__title {
@@ -167,10 +168,10 @@
       outline: none;
       background: none;
       opacity: 0.3;
-      -webkit-transition: opacity .24s ease;
-      -o-transition: opacity .24s ease;
-      -moz-transition: opacity .24s ease;
-      transition: opacity .24s ease; }
+      -webkit-transition: opacity 0.24s ease;
+      -o-transition: opacity 0.24s ease;
+      -moz-transition: opacity 0.24s ease;
+      transition: opacity 0.24s ease; }
       .diamodal-box__close-button svg {
         display: block;
         width: 16px;
@@ -219,7 +220,7 @@
   display: inline-block;
   position: relative;
   color: #1d1d1d; }
-  .diamodal-form-input:not(:first-child) {
+  .diamodal-form-input:not(:first-child):not(.diamodal-form-input--hidden) {
     margin-top: 20px; }
   .diamodal-form-input--fullwidth {
     display: block !important;
@@ -258,12 +259,12 @@
         -ms-transform-origin: 50% 50%;
          -o-transform-origin: 50% 50%;
             transform-origin: 50% 50%;
-    -webkit-transition: -webkit-transform .32s ease;
-    transition: -webkit-transform .32s ease;
-    -o-transition: -o-transform .32s ease;
-    -moz-transition: transform .32s ease, -moz-transform .32s ease;
-    transition: transform .32s ease;
-    transition: transform .32s ease, -webkit-transform .32s ease, -moz-transform .32s ease, -o-transform .32s ease; }
+    -webkit-transition: -webkit-transform 0.32s ease;
+    transition: -webkit-transform 0.32s ease;
+    -o-transition: -o-transform 0.32s ease;
+    -moz-transition: transform 0.32s ease, -moz-transform 0.32s ease;
+    transition: transform 0.32s ease;
+    transition: transform 0.32s ease, -webkit-transform 0.32s ease, -moz-transform 0.32s ease, -o-transform 0.32s ease; }
   .diamodal-form-input:not(.diamodal-form-input--checkbox):not(.diamodal-form-input--radio) .diamodal-form-input__label {
     display: block;
     position: absolute;
@@ -271,6 +272,7 @@
     margin: 0 0 0 10px;
     top: 0;
     left: 0;
+    max-width: 100%;
     font-size: 16px;
     font-weight: normal;
     color: #888888;
@@ -290,10 +292,10 @@
         -ms-transform-origin: 0;
          -o-transform-origin: 0;
             transform-origin: 0;
-    -webkit-transition: all .24s ease;
-    -o-transition: all .24s ease;
-    -moz-transition: all .24s ease;
-    transition: all .24s ease; }
+    -webkit-transition: all 0.24s ease;
+    -o-transition: all 0.24s ease;
+    -moz-transition: all 0.24s ease;
+    transition: all 0.24s ease; }
   .diamodal-form-input:not(.diamodal-form-input--checkbox):not(.diamodal-form-input--radio) .diamodal-form-input__input {
     display: block;
     width: 100%;
@@ -303,10 +305,10 @@
     color: #1d1d1d;
     border: 1px solid #eeeeee;
     font-size: 16px;
-    -webkit-transition: border-color .24s ease;
-    -o-transition: border-color .24s ease;
-    -moz-transition: border-color .24s ease;
-    transition: border-color .24s ease; }
+    -webkit-transition: border-color 0.24s ease;
+    -o-transition: border-color 0.24s ease;
+    -moz-transition: border-color 0.24s ease;
+    transition: border-color 0.24s ease; }
   .diamodal-form-input:not(.diamodal-form-input--checkbox):not(.diamodal-form-input--radio):not(.diamodal-form-input--select) .diamodal-form-input__input {
     background: none;
     outline: none; }
@@ -337,25 +339,26 @@
       height: 24px;
       margin-top: -12px; }
     .diamodal-form-input--checkbox .diamodal-form-input__label::before, .diamodal-form-input--radio .diamodal-form-input__label::before {
+      background-color: #fff;
       border: 1px solid #eeeeee;
-      -webkit-transition: border-color .08s ease, -webkit-box-shadow .16s ease;
-      transition: border-color .08s ease, -webkit-box-shadow .16s ease;
-      -o-transition: box-shadow .16s ease, border-color .08s ease;
-      -moz-transition: box-shadow .16s ease, border-color .08s ease, -moz-box-shadow .16s ease;
-      transition: box-shadow .16s ease, border-color .08s ease;
-      transition: box-shadow .16s ease, border-color .08s ease, -webkit-box-shadow .16s ease, -moz-box-shadow .16s ease; }
+      -webkit-transition: border-color 0.08s ease, -webkit-box-shadow 0.16s ease;
+      transition: border-color 0.08s ease, -webkit-box-shadow 0.16s ease;
+      -o-transition: box-shadow 0.16s ease, border-color 0.08s ease;
+      -moz-transition: box-shadow 0.16s ease, border-color 0.08s ease, -moz-box-shadow 0.16s ease;
+      transition: box-shadow 0.16s ease, border-color 0.08s ease;
+      transition: box-shadow 0.16s ease, border-color 0.08s ease, -webkit-box-shadow 0.16s ease, -moz-box-shadow 0.16s ease; }
     .diamodal-form-input--checkbox .diamodal-form-input__label::after, .diamodal-form-input--radio .diamodal-form-input__label::after {
       -webkit-transform: scale(0);
          -moz-transform: scale(0);
           -ms-transform: scale(0);
            -o-transform: scale(0);
               transform: scale(0);
-      -webkit-transition: -webkit-transform .16s ease;
-      transition: -webkit-transform .16s ease;
-      -o-transition: -o-transform .16s ease;
-      -moz-transition: transform .16s ease, -moz-transform .16s ease;
-      transition: transform .16s ease;
-      transition: transform .16s ease, -webkit-transform .16s ease, -moz-transform .16s ease, -o-transform .16s ease; }
+      -webkit-transition: -webkit-transform 0.16s ease;
+      transition: -webkit-transform 0.16s ease;
+      -o-transition: -o-transform 0.16s ease;
+      -moz-transition: transform 0.16s ease, -moz-transform 0.16s ease;
+      transition: transform 0.16s ease;
+      transition: transform 0.16s ease, -webkit-transform 0.16s ease, -moz-transform 0.16s ease, -o-transform 0.16s ease; }
   .diamodal-form-input--checkbox .diamodal-form-input__label::before {
     -webkit-border-radius: 3px;
        -moz-border-radius: 3px;
