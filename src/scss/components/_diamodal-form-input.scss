@@ -130,6 +130,7 @@ $diamodal-input-label-font-color: $diamodal-secondary-text-color !default;
       }
 
       &::before {
+        background-color: #fff;
         border: 1px solid $diamodal-input-neutral-line-color;
         transition: box-shadow 0.16s ease, border-color 0.08s ease;
       }
